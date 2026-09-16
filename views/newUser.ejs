@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head') %>
+  <body>
+    <%- include('partials/nav') %>
+    <main>
+      <h1>New User</h1>
+      <form action="/new" method="post">
+
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"
+        placeholder="Enter a user name here"
+        value="<%= username %>"
+        required >
+      </div>
+
+      <%- include("partials/errors.ejs") %>
+
+      <button type="submit">Submit</button>
+      </form>
+    </main>
+  </body>
+</html>
