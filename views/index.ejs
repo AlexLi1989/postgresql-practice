@@ -7,7 +7,12 @@
       <h1>Index</h1>
       <ul>
       <% usernames.forEach((user)=>{ %>
-        <li><%= user.id %>: <%= user.username %></li>
+        <li><%= user.id %>: <%= user.username %>
+        <form action="/delete" method="POST">
+          <input type="hidden" name="id" value="<%= user.id %>">
+          <button type="submit" class="delete-btn">Delete</button>
+        </form>
+        </li>
       <% }) %>
       </ul>
     </main>

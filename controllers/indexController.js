@@ -9,6 +9,16 @@ async function index(req, res, next) {
   }
 }
 
+async function userDeletePost(req, res, next) {
+  try {
+    await db.deleteUsername(req.body.id);
+    res.redirect("/");
+  } catch (error) {
+    next(error);
+  }
+}
+
 module.exports = {
   index,
+  userDeletePost,
 };
