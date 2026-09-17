@@ -10,7 +10,16 @@ async function insertUsername(username) {
   //$1 is a placeholder to prevent SQL injection
 }
 
+async function searchUsername(username) {
+  const { rows } = await pool.query(
+    "SELECT * FROM usernames WHERE username ILIKE ($1)",
+    [`%${username}%`],
+  );
+  return rows;
+}
+
 module.exports = {
   getAllUsernames,
   insertUsername,
+  searchUsername,
 };

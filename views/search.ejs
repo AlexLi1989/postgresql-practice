@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head') %>
+  <body>
+    <%- include('partials/nav') %>
+    <main>
+    <h1><%= TITLE %></h1>
+
+    <form action='/search' method="GET">
+
+      <div>
+        <label for='username'>Search by Username:</label>
+        <input type="text" name="username" id="username" value="<%= username %>" placeholder="Enter username here">
+      </div>
+
+      <button type="submit">Search</button>
+    </form>
+
+    <%- include("partials/errors.ejs") %>
+
+    <% if(hasSearched) { %>
+      <% if(searchResult.length > 0) { %>
+        <h2>Search Results</h2>
+          <ul>
+            <% searchResult.forEach(user => { %>
+              <li>
+                ID: <%= user.id %>
+                Name: <%= user.username %>
+              </li>
+            <% }) %>
+          </ul>
+      <% } else { %>
+        <h2>No results found</h2>
+      <% } %>
+    <% } %>
+    </main>
+  </body>
+</html>
